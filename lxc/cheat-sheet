@@ -1,0 +1,7 @@
+lxc network list             # display
+lxc network show <device>    # information about a device
+
+lxc network remove  lxdbr0
+# lxc profiile edit default
+lxc network detach-profile lxdbr0
+lxc network delete lxdbr0

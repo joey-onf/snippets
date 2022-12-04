@@ -1,0 +1,14 @@
+    lxc list
+    lxc delete <whatever came from list>
+    lxc image list
+    lxc image delete <whatever came from list>
+    lxc network list
+    lxc network delete <whatever came from list>
+    echo ‘{“config”: {}}’ | lxc profile edit default
+    lxc storage volume list default
+    lxc storage volume delete default <whatever came from list>
+    lxc storage delete default
+
+https://discuss.linuxcontainers.org/t/sudo-snap-remove-lxd-removes-lxd-but-does-not-remove-the-the-group-lxd-in-etc-group-shouldnt-it/2992/5
+
+https://github.com/ilhaan/lxd-delete-containers

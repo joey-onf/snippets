@@ -1,6 +1,16 @@
 # -*- makefile -*-
 ## -----------------------------------------------------------------------
 ## Intent: A template makefile with library includes and common targets.
+## Hierarchy:
+##    makefiles/ # {ONF_MK}
+##    {project}/makefile
+##    {project}/makefiles/
+##    {project}/makefiles/include.mk
+##    {project}/makefiles/lint/
+##    {project}/makefiles/lint/include.mk
+##    {project}/makefiles/lint/json.mk
+##    {project}/makefiles/lint/shellcheck.mk
+##    {project}/makefiles/lint/yaml.mk
 ## -----------------------------------------------------------------------
 
 .DEFAULT_GOAL := all

@@ -1,0 +1,24 @@
+REPO: ssh://gerrit.opencord.org:29418/voltha-docs.git
+----------------------------------------------------------------------------
+`-- makefiles
+    |-- consts.mk
+    |-- help
+    |   |-- include.mk
+    |   |-- trailer.mk
+    |   `-- variables.mk
+    |-- lint
+    |   |-- include.mk
+    |   |-- json.mk
+    |   |-- python.mk
+    |   |-- robot.mk
+    |   |-- shell.mk
+    |   `-- yaml.mk
+    |-- patches
+    |   |-- help.mk
+    |   |-- include.mk
+    |   `-- README.md
+    |-- virtualenv.mk
+    `-- voltha
+        `-- docs-catchall-targets.mk
+
+5 directories, 15 files

@@ -1,0 +1,23 @@
+REPO: ssh://gerrit.opencord.org:29418/voltha-system-tests.git
+----------------------------------------------------------------------------
+`-- makefiles
+    |-- consts.mk
+    |-- help.mk
+    |-- lint
+    |   |-- json.mk
+    |   |-- license
+    |   |   |-- include.mk
+    |   |   |-- license-check.sh
+    |   |   |-- license-check.sh.safe
+    |   |   `-- license-helper.sh
+    |   |-- python.mk
+    |   |-- robot.mk
+    |   |-- shell.mk
+    |   `-- yaml.mk
+    |-- lint.mk
+    |-- patches
+    |   |-- help.mk
+    |   `-- include.mk
+    `-- virtualenv.mk
+
+4 directories, 15 files

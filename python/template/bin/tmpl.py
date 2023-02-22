@@ -21,7 +21,8 @@ import pprint
 from pathlib           import Path
 
 from tmpl.main        import utils           as main_utils
-from tmpl.main        import argparse        as main_getopt
+from tmpl.main.argparse.utils\
+    import Argv
 
 from tmpl.struct      import data_structure  as ds
 
@@ -37,10 +38,7 @@ def process():
 def init(argv_raw) -> None:
     '''Prep for a script run.'''
 
-    ## Move to class tmpl/main/utils.py
-    main_getopt.getopts(argv_raw)    
-    argv  = main_getopt.get_argv()
-
+    argv = Argv().get_argv()
     return
     
 ## -----------------------------------------------------------------------
@@ -49,8 +47,8 @@ def main(argv_raw):
     '''.'''
 
     init(argv_raw)
-    argv  = main_getopt.get_argv()
-    if argv['verbose']:
+    argv = Argv().get_argv()
+    if 'verbose' in argv and argv['verbose']:
         pprint.pprint(argv)
             
     # process()

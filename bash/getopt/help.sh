@@ -19,6 +19,6 @@ Usage:
 
 EOH
 
-: # $?=0 -- parse errors can manifest after source command returns
+: # ($?=0) -- parse errors can manifest after source command returns
 
 # [EOF]

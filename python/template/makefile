@@ -76,6 +76,11 @@ todo:
 
 ## -----------------------------------------------------------------------
 ## -----------------------------------------------------------------------
+view::
+	pandoc README.md | lynx -stdin
+
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 version:
 	$(main) --$@
 
@@ -101,6 +106,7 @@ help ::
 	@echo "  install    Create tool foo.py by installing tmpl sources"
 	@echo "  todo       Display enhancement list"
 	@echo "  version    Display script version"
+	@echo "  view       Render README.md"
 	@echo
 	@echo "[CLEAN]"
 	@echo "  clean      Remove generated content"

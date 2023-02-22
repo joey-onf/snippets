@@ -51,6 +51,7 @@ rsync -rv --checksum '.' "${dst}/."
 pushd "$dst"
 
 /bin/rm -v 'makefile'
+/bin/rm -v 'README.md'
 /bin/rm -v 'bin/deploy.sh'
 
 mv -v 'bin/tmpl.py' "bin/${pgm}.py"

@@ -50,6 +50,12 @@ Usage: $0
   --patch-dir    [p]    reate generated patches in this directory
 
   @list          A list of relative file paths for patch creation.
+
+% create-from-diff.sh \
+    --compare-from staging \
+    --compare-with venv_docs \
+    lib/python3.10/site-packages/sphinx/util/typing.py
+
 EOH
 	    ;;
 
@@ -73,15 +79,6 @@ EOH
 ##----------------##
 parseArgs
 
-# $ create-from-diff.sh \
-#     --compare-from staging \
-#     --compare-with venv_docs \
-#     lib/python3.10/site-packages/sphinx/util/typing.py
-#
-# diff -Naur \
-#     staging/lib/python3.10/site-packages/sphinx/util/typing.py \
-#     venv_docs/lib/python3.10/site-packages/sphinx/util/typing.py
-    
 for fyl in "${fyls[@]}";
 do
     dirName="${fyl%/*}"

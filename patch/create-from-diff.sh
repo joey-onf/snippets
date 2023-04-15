@@ -1,9 +1,10 @@
 #!/bin/bash
 ## -----------------------------------------------------------------------
-## Intent: Create a patch form 
+## Intent: Create patch files from two directories and a list of sources.
 ## -----------------------------------------------------------------------
 
 ## -----------------------------------------------------------------------
+## Intent: Display an error message then exit
 ## -----------------------------------------------------------------------
 function error()
 {
@@ -12,6 +13,7 @@ function error()
 }
 
 ## -----------------------------------------------------------------------
+## Intent: Parse and validate command line arguments
 ## -----------------------------------------------------------------------
 function parseArgs()
 {
@@ -71,15 +73,22 @@ EOH
 ##----------------##
 parseArgs
 
+# $ create-from-diff.sh \
+#     --compare-from staging \
+#     --compare-with venv_docs \
+#     lib/python3.10/site-packages/sphinx/util/typing.py
+#
+# diff -Naur \
+#     staging/lib/python3.10/site-packages/sphinx/util/typing.py \
+#     venv_docs/lib/python3.10/site-packages/sphinx/util/typing.py
+    
 for fyl in "${fyls[@]}";
 do
     dirName="${fyl%/*}"
     baseName="${fyl##*/}"
-    # diff -Naur \
+    diff -Naur "${compare_from}/$fyl" "${with_dir}/$fyl" \
+	| tee "${patch_dir}/$fyl"
 
-    #   staging/lib/python3.10/site-packages/sphinx/util/typing.py \
-    #   venv_docs/lib/python3.10/site-packages/sphinx/util/typing.py
-    diff -Naur "${compare_from}/$fyl" "${with_dir}/$fyl" | tee "${patch_dir}/$fyl"
 done
 
 # [EOF]

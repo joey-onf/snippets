@@ -29,6 +29,27 @@ function indirect_insert_prefix()
     return
 }
 
+## -----------------------------------------------------------------------
+## Intent: Modify an array through an indirect variable.
+##   o Insert a prefix string
+## -----------------------------------------------------------------------
+function indirect_insert_prefix()
+{
+    local prefix="$1"; shift
+
+    cat <<EOH
+
+# declare [options] [name[=value]] [name=[value]]..
+# local -[aix] [name[=value]]
+
+declare -a foo=()               Declare array foo
+declare -i bar=4                Declare scalar bar assigned 4
+declare -x DEBUG=1              export DEBUG=1
+
+EOH
+    return
+}
+
 ##----------------##
 ##---]  MAIN  [---##
 ##----------------##
@@ -44,5 +65,6 @@ declare -p values \
     | awk -F\" '{print "    "$2}'
 echo
 
+examples
 
 # [EOF]

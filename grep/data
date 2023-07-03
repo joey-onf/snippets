@@ -1,0 +1,17 @@
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 Control Channel MTU parms [ L:1621 D:1172 EF:78 EB:0 ET:0 EL:3 ]
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 Data Channel MTU parms [ L:1621 D:1450 EF:121 EB:406 ET:0 EL:3 ]
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 Local Options String (VER=V4): 'V4,dev-type tun,link-mtu 1549,tun-mtu 1500,proto UDPv4,keydir 0,cipher AES-256-GCM,auth [null-digest],keysize 256,tls-auth,key-method 2,tls-server'
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 Expected Remote Options String (VER=V4): 'V4,dev-type tun,link-mtu 1549,tun-mtu 1500,proto UDPv4,keydir 1,cipher AES-256-GCM,auth [null-digest],keysize 256,tls-auth,key-method 2,tls-client'
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 TLS: Initial packet from [AF_INET]74.109.189.133:50524, sid=c85ee955 65d60baf
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 VERIFY ERROR: depth=0, error=CRL has expired: C=US, ST=California, L=Menlo Park, O=ONF, OU=Infra, CN=joey, serial=644337347939770534843486087324032839073951386833
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 OpenSSL: error:1417C086:SSL routines:tls_process_client_certificate:certificate verify failed
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 TLS_ERROR: BIO read tls_read_plaintext error
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 TLS Error: TLS object -> incoming plaintext read error
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 TLS Error: TLS handshake failed
+Jun 15 07:52:04 coresite-gw ovpn-server[68312]: 74.109.189.133:50524 SIGUSR1[soft,tls-error] received, client-instance restarting
+Jun 15 14:32:52 coresite-gw ovpn-server[68312]: TLS Error: cannot locate HMAC in incoming packet from [AF_INET]185.200.118.83:37103
+Jun 15 18:26:50 coresite-gw ovpn-server[68312]: TLS Error: cannot locate HMAC in incoming packet from [AF_INET]199.195.248.205:48730
+Jun 15 20:30:47 coresite-gw ovpn-server[68312]: TLS Error: cannot locate HMAC in incoming packet from [AF_INET]146.88.240.4:43581
+Jun 15 22:57:58 coresite-gw ovpn-server[68312]: TLS Error: cannot locate HMAC in incoming packet from [AF_INET]205.210.31.164:56499
+Jun 16 02:36:48 coresite-gw ovpn-server[68312]: TLS Error: cannot locate HMAC in incoming packet from [AF_INET]38.132.109.118:36918
+Jun 16 10:29:35 coresite-gw ovpn-server[68312]: TLS Error: cannot locate HMAC in incoming packet from [AF_INET]107.170.253.7:41694

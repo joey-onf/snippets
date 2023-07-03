@@ -1,0 +1,33 @@
+# -*- makefile -*-
+
+PKG := foo
+
+SRC ?= $(HOME)/projects/sandbox/snippets/python/template
+PKG ?= $(error PKG= is required)
+
+xargs-args += -t
+# xargs-args += --max-args=1
+xargs-args += -I {}
+
+sed-cmd := sed -i'' -e 's/tmpl\./$(PKG)./g'
+all:
+	mkdir -vp $(PKG)
+	rsync -rv --checksum $(SRC)/. $(PKG)/.
+	mv $(PKG)/bin/tmpl.py $(PKG)/bin/$(PKG).py
+	mv $(PKG)/tmpl $(PKG)/$(PKG)
+	@find "$(PKG)" -name 'makefiles' -prune -o -type f -print0 \
+	  | xargs -0 $(xargs-args) /bin/bash -c "$(sed-cmd) {}"
+
+	sed -i'' -e 's/tmpl/$(PKG)/g' $$(find "$(PKG)" -name '*.sh')
+	sed -i'' -e 's/tmpl/$(PKG)/g' "$(PKG)/makefile"
+
+	grep -r 'tmpl' "$(PKG)"
+
+do:
+	$(MAKE) clean
+	$(MAKE) PKG=foo
+
+clean ::
+	$(RM) -r "$(PKG)"
+
+# [EOF]

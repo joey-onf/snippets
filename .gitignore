@@ -1,5 +1,6 @@
 # -*- makefile -*-
 
+.ts/
 __pycache__/
 
 # [EOF]

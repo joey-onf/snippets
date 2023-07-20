@@ -3,6 +3,12 @@
 ## Intent: Bash builtins for filesystem path parsing
 ## -------------------------------------------------
 
+##-------------------##
+##---]  GLOBALS  [---##
+##-------------------##
+umask 0
+set -euo pipefail
+
 ## -----------------------------------------------------------------------
 ## Intent: Extract stem and extension
 ## -----------------------------------------------------------------------
@@ -31,15 +37,18 @@ EOEX
 ## -----------------------------------------------------------------------
 function program_paths()
 {
-    declare -g pgm="$(realpath --canonicalize-existing "$0")"
+    declare -g pgm="$(readlink --canonicalize-existing "$0")"
     declare -g pgmbin="${pgm%/*}"
     declare -g pgmroot="${pgmbin%/*}"
-    declare -g pgmname="${%%*/}"
+    declare -g pgmname="${pgm%%*/}"
 
     readonly pgm
     readonly pgmbin
     readonly pgmroot
     readonly pgmname
+
+    declare -g start_pwd="$(realpath --canonicalize-existing '.')"
+    readonly start_pwd
 
     cat <<EOEX
 
@@ -48,14 +57,15 @@ function program_paths()
 ##  Intent: Extract paths from program path for derived logic.
 ## -----------------------------------------------------------------------
 
- ** delete shortest from front (#*\.): ${path#*\.}
+ [ABSPATH: realpath]
+ ** Pgm     (realpath \$0): $pgm
+ ** Pwd     (realpath '.'): $start_pwd
 
-  ** delete shortest from front (#*\.): ${path#*\.}
-
- ** Program abs (realpath): $pgm
+ [RELPATH: basename, dirname]
  ** Program bin  dir (%/*): $pgm
  ** Program root dir (%/*): $pgm
  ** Program name (%%/*/): $pgm
+
 EOEX
 
     return

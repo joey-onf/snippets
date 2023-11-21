@@ -1,0 +1,2 @@
+M-x mark-whole-buffer
+M-x delete-trailing-whitespace

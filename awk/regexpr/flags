@@ -1,0 +1,10 @@
+#$ gawk 'match($0, pattern, ary) {print ary[1]}'
+
+#	github.com/opencord/omci-lib-go/v2 v2.2.3
+#	github.com/opencord/voltha-protos/v5 v5.4.6
+#	github.com/pkg/errors v0.8.1 // indirect
+
+# \A - string begin
+# \z - string end
+# \b word boundry
+# VERSION=$(awk -e '$1 ~ /\b(\d+\.\w+)\b/ {print $0}' 'VERSION')

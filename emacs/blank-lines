@@ -1,0 +1,5 @@
+;; delete blank lines and whitespace
+;; (global-set-key (kbd "M-SPC") 'shrink-whitespace)
+    
+M-x mark-whole-buffer
+M-x shrink-whitespace

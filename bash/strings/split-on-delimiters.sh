@@ -37,7 +37,7 @@ function split_on_delimiters()
     echo "[SPLIT: on delimiter(s)]"
     echo
 
-    _fields=( $(grep -Eo '[^+-]+' <<<"$val") )
+    _fields=( $(grep -Eo '[^+-]+' <<<"$val") ) 
     echo "  REGEX: _fields=( \$(grep -Eo \'[^+-]+\' <<<\"\$val\") )"
     echo "      ans: ${_fields[@]}"
 #     echo " ** grep on regex: $(declare -p _fields)"

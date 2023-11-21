@@ -9,8 +9,8 @@
 set -euo pipefail
 shopt -s extglob # enable extended globbing
 
-## -----------------------------------------------------------------------=
-## -----------------------------------------------------------------------=
+## -----------------------------------------------------------------------
+## -----------------------------------------------------------------------
 function error()
 {
     local iam="${BASH_SOURCE[0]%*/}::${FUNCNAME[0]}"
@@ -80,14 +80,42 @@ EOEX
     return
 }
 
+## -----------------------------------------------------------------------
+## Intent: Different sytnax for removal
+## -----------------------------------------------------------------------
+function negative_offset()
+{
+    local iam="${BASH_SOURCE[0]%*/}::${FUNCNAME[0]}"
+    local path='/home/tux/projects/onf_urls/onf_urls/main/core_utils.sh'
+
+    local -i len=${#path}
+    idx=$((len - 20))
+    idx=$((${#path} - 20))
+
+    cat <<EOEX
+
+=======================================================================
+** Example: $iam
+**   LEN: $len
+**   extract: ${path:0:27}
+**   replace: ${path%//main/core_utils.sh/}
+=======================================================================
+
+EOEX
+
+    echo "RETURN"
+return
+}
+
 # @(pattern-list): Matches one of the given patterns.
 # string="${string#@(foo|boo)}"
 
 ##----------------##
 ##---]  MAIN  [---##
 ##----------------##
-remove_hyphen_if
-remove_prefix
+# remove_hyphen_if
+# remove_prefix
+negative_offset
 
 # [SEE ALSO]
 # ---------------------------------------------------------------------

@@ -10,9 +10,9 @@ function string_contains_substring()
     local exp='foo'
 
     if [[ "$exp" == *"$hav"* ]]; then
-	echo "Detected: $(declare -p hav) in $(declare -p exp)"
+	    echo "Detected: $(declare -p hav) in $(declare -p exp)"
     else
-	echo "FAIL: $(declare -p hav) not in $(declare -p exp)"
+	    echo "FAIL: $(declare -p hav) not in $(declare -p exp)"
     fi
     return
 }

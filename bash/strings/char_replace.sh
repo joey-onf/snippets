@@ -19,6 +19,40 @@ function error()
 }
 
 ## -----------------------------------------------------------------------
+## Intent: Remove string suffix using bash builtin, shortest string
+##         removal from end-of-string.  Loop and display until string
+##         stem is found.
+## -----------------------------------------------------------------------
+function remove_dots()
+{
+    local iam="${BASH_SOURCE[0]%*/}::${FUNCNAME[0]}"
+
+    local val='aa.bb.cc.dd.ee.ff'
+    cat <<EOEX
+
+=======================================================================
+** Example: $iam
+=======================================================================
+  Delimited string: $val
+EOEX
+
+    local -i count=10
+    while [[ "$val" == *'.'* ]]; do
+
+        [[ "$val" == 'aa' ]] && { break; }
+        [[ $count -eq 0 ]] && { error "split failed val=[$val]"; }
+        count=$((-1 + $count))
+
+        src="$val"
+        val="${val%\.*}"
+
+        printf '    %d) %s\n' "$count" "$val"
+    done
+    
+    return
+}
+
+## -----------------------------------------------------------------------
 ## Intent: Remove hyphen prefix from a switch argument
 ## -----------------------------------------------------------------------
 function remove_prefix()
@@ -47,9 +81,9 @@ EOX
     local raw
     for raw in "${raws[@]}";
     do
-	fmt="${raw##+(-)}"
-	echo "** raw=[$raw], fmt=[$fmt]"
-	[[ "${fmt:0:1}" == '-' ]] && error "Hyphen removal failed: $raw"
+        fmt="${raw##+(-)}"
+        echo "** raw=[$raw], fmt=[$fmt]"
+        [[ "${fmt:0:1}" == '-' ]] && error "Hyphen removal failed: $raw"
     done
     return
 }
@@ -103,8 +137,7 @@ function negative_offset()
 
 EOEX
 
-    echo "RETURN"
-return
+    return
 }
 
 # @(pattern-list): Matches one of the given patterns.
@@ -113,9 +146,10 @@ return
 ##----------------##
 ##---]  MAIN  [---##
 ##----------------##
-# remove_hyphen_if
-# remove_prefix
+remove_hyphen_if
+remove_prefix
 negative_offset
+remove_dots
 
 # [SEE ALSO]
 # ---------------------------------------------------------------------

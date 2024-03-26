@@ -14,5 +14,3 @@ artifact_dir="${ARTIFACT_GLOB%/*}"
 declare -p artifact_dir
 
 # [EOF]
-
-    

@@ -1,6 +1,6 @@
 #!/bin/bash
 ## -----------------------------------------------------------------------
-## Intent: 
+## Intent:
 ## -----------------------------------------------------------------------
 
 ##----------------##
@@ -13,23 +13,23 @@ declare -a portable=('\#.\#')
 unameOut="$(uname -s)"
 case "${unameOut}" in
     Linux*)
-	machine=Linux
-	comms+=('#.#')
-	;;
+        machine=Linux
+        comms+=('#.#')
+        ;;
 
     Darwin*)
-	machine=Mac
-	comms+=('\#.\#') # osx requires escape
-	;;
+        machine=Mac
+        comms+=('\#.\#') # osx requires escape
+        ;;
     CYGWIN*)
-	machine=Cygwin
-	;;
+        machine=Cygwin
+        ;;
     MINGW*)
-	machine=MinGw
-	;;
+        machine=MinGw
+        ;;
     *)
-	machine="UNKNOWN:${unameOut}"
-	;;
+        machine="UNKNOWN:${unameOut}"
+        ;;
 esac
 
 echo "Quoted Comment Strings:"

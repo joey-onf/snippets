@@ -42,6 +42,8 @@ function program_paths()
     declare -g pgmroot="${pgmbin%/*}"
     declare -g pgmname="${pgm%%*/}"
 
+#    local pgmdir="$(realpath --canonicalize-existing "${0%/*}/..")"
+    
     declare -g pgmsrc
     pgmsrc="$(readlink --canonicalize-existing "${BASH_SOURCE[0]}")"
     readonly pgmsrc

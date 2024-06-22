@@ -1,0 +1,30 @@
+etc/makefiles/javascript/js-beautify/
+etc/pending
+# golang/module/pkg
+# golang/module/pkg/mod/cache
+*/cache/*
+*/pkg/*
+## FILES
+*~
+*.log
+*.pyc
+old
+.config
+.cache
+
+projects/tor
+
+tmp/downloads/backup-20200209/projects/src/go
+tmp/downloads/backup-20200209/projects/src
+tmp/downloads/backup-20200209/projects/soffice
+tmp/downloads/backup-20200209/projects/soffice
+
+.cache
+.cinnamon
+.config
+.ecryptfs
+.emacs.d
+.local
+.mozilla
+.ecryptfs
+.themes

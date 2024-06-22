@@ -5,20 +5,20 @@
 ## -----------------------------------------------------------------------
 function do_urls()
 {
-    declare -nl pointer="$1"; shift
-    [ ${#pointer[@]} -eq  0 ] && return
-    
+    declare -nl pointer=$1; shift
+    [ ${#pointer[@]} -eq 0 ] && { return; } || { true; }
+
     [[ -v DEBUG ]] && echo " ** ${FUNCNAME[0]}: $# $*"
 
     declare -a args=()
     local key
     for key in "${!pointer[@]}"
     do
-	local url="${pointer[$key]}"
-	args+=('--new-tab' "$url")
+        local url="${pointer[$key]}"
+        args+=('--new-tab' "$url")
     done
     declare -p args
-    
+
     ## TODO: cleanup Gtk-message warnings
     firefox "${args[@]}" >/dev/null
 

@@ -37,6 +37,10 @@ function show_topic_switches()
             | sort \
         )
 
+    local path="${dir/${pgmroot}/}"
+    declare -p path
+    exit 1
+    
     ## Derive and display command line switches
     local topic
     for topic in "${dirs[@]}";

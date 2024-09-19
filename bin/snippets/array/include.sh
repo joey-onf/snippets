@@ -1,13 +1,9 @@
 #!/bin/bash
 ## -----------------------------------------------------------------------
-## Intent: Pimary library source loader
+## Intent: Load main/* library includes
 ## -----------------------------------------------------------------------
 
-source "$pgmlib/main/include.sh"
-source "$pgmlib/help/include.sh"
-source "$pgmlib/todo/include.sh"
-
-source "$pgmlib/array/include.sh"
+source "$pgmlib/array/parse_args.sh"
 
 : # assign ($?=0) for source $script
 

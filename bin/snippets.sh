@@ -87,30 +87,20 @@ while [[ ${#argv[0]} -gt 0 ]]; do
 
         '--edit') declare -i -g edit_mode=1 ;;
 
-        '--emacs')
-            fyls+=( $(find "$pgmroot" -type f -print) )
-            ;;
+        '--emacs') fyls+=( $(find "$pgmroot" -type f -print) ) ;;
 
         ## [TOPIC: commands]
         '--awk'*)  handle_switch "$fyl" "${topicroot}/awk"  libs ;;
         '--grep'*) handle_switch "$fyl" "${topicroot}/grep" libs ;;
 
         ## [TOPIC: by-source]                
-        '--dirname')  libs+=("${bash_strings}/dirname_basename.sh")    ;;
+        '--dirname') libs+=("${bash_strings}/dirname_basename.sh")    ;;
+        '--join')	 libs+=("${bash_strings}/join-on-delimiter.sh")   ;;
+        '--split')    libs+=("${bash_strings}/split-on-delimiters.sh") ;;
 
-        ## -----------------------------------------------------------------------
-        ## -----------------------------------------------------------------------
-        --array*)
-            case "$fyl" in
-                *contains)
-                    libs+=("${bash_array}/contains/if_contains_element.sh")
-                    ;;
-                *)
-                    readarray -t paths < <(find "$bash_array" -type f -print)
-                    libs+=("${paths[@]}")
-                    ;;
-            esac
-            ;;
+        '--array'*)  getopts_array "$fyl" "${bash_array}" libs        ;;
+        '--dict'*)   handle_switch "$fyl" "${bash_dict}" libs         ;;
+        '--str'*)    handle_switch "$fyl" "${bash_strings}" libs      ;;
         
         ##
         --common)
@@ -118,23 +108,12 @@ while [[ ${#argv[0]} -gt 0 ]]; do
             fyls+=( $(find "$common/sh" -type f -print) )
             ;;
         
-        --dict*)
-            readarray -t paths < <(find "$bash_dict" -type f -print)
-            libs+=("${paths[@]}")
-            ;;
-        
-        --join)	    libs+=("${bash_strings}/join-on-delimiter.sh")   ;;
-        --snippets) fyls+=("$0") ;;
-        --split)    libs+=("${bash_strings}/split-on-delimiters.sh") ;;
-
-        --str*)
-            readarray -t paths < <(find "$bash_strings" -type f -print)
-            libs+=("${paths[@]}")
-            ;;
+        '--snippets') fyls+=("$0") ;;
 
         '-'*) error "Detected invalid argument [$arg]" ;;
 
         '/'*) fyls+=("$fyl")           ;;
+
 	    *) fyls+=("${start_pwd}/$fyl") ;;
     esac
 done

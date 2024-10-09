@@ -92,18 +92,27 @@ while [[ ${#argv[0]} -gt 0 ]]; do
         ## [TOPIC: commands]
         '--awk'*)  handle_switch "$fyl" "${topicroot}/awk"  libs ;;
         '--grep'*) handle_switch "$fyl" "${topicroot}/grep" libs ;;
+        '--make'*) handle_switch "$fyl" "${topicroot}/make" libs ;;
 
         ## [TOPIC: by-source]                
         '--dirname') libs+=("${bash_strings}/dirname_basename.sh")    ;;
-        '--join')	 libs+=("${bash_strings}/join-on-delimiter.sh")   ;;
-        '--split')    libs+=("${bash_strings}/split-on-delimiters.sh") ;;
+        '--join')    libs+=("${bash_strings}/join-on-delimiter.sh")   ;;
+        '--split')   libs+=("${bash_strings}/split-on-delimiters.sh") ;;
 
         '--array'*)  getopts_array "$fyl" "${bash_array}" libs        ;;
         '--dict'*)   handle_switch "$fyl" "${bash_dict}" libs         ;;
         '--str'*)    handle_switch "$fyl" "${bash_strings}" libs      ;;
-        
+
+#        '--readarray')
+#	    getopts_array "$arg" "$fyl" "${bash_array}" libs ;;
+
         ##
         --common)
+	    # declare -- arg="--readarray"
+	    # declare -- fyl="--readarray"
+	    # declare -- bash_array="bash/array"
+	    # /sandbox/snippets/bin/snippets/array/parse_args.sh: line 12: local: `bash/array': invalid variable name for name reference
+
             common="$HOME/.sandbox/common/"
             fyls+=( $(find "$common/sh" -type f -print) )
             ;;
